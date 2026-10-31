@@ -1,0 +1,59 @@
+# ---- Data (never commit raw data) ----
+# Anchored to the repo root so a nested `data/` can still be committed
+# as a test fixture.
+/data/
+*.parquet
+*.duckdb
+*.duckdb.wal
+
+# Test fixtures are the exception: CI needs them committed.
+!tests/fixtures/**
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# ---- Secrets ----
+.env
+.env.*
+!.env.example
+*-key.json
+credentials*.json
+service-account*.json
+
+# ---- dbt ----
+# Unanchored, so these match wherever the dbt project folder ends up.
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# ---- Airflow ----
+# airflow.db only appears if you ever run Airflow outside Docker.
+airflow.db
+airflow.cfg
+standalone_admin_password.txt
+
+# ---- Terraform ----
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+# Note: .terraform.lock.hcl is deliberately NOT ignored — commit it.
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+.vscode/settings.json
+.idea/
