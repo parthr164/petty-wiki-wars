@@ -1,7 +1,10 @@
 # ---- Data (never commit raw data) ----
 # Anchored to the repo root so a nested `data/` can still be committed
 # as a test fixture.
-/data/
+/data/*
+!/data/raw/
+/data/raw/*
+!/data/raw/.gitkeep
 *.parquet
 *.duckdb
 *.duckdb.wal
